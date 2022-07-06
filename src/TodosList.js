@@ -33,16 +33,16 @@ function TodosList({ users: { id, name } }) {
 		)
 	})
 
-  					<div value={true}>
-						<h3>{name}</h3>
-						<p>Showing incomplete Todos</p>
-						<button onClick={triggerToggle}>Toggle filter</button>
-						<ul className='container list-group'>{todosList}</ul>
-					</div>
+	// 	<div value={true}>
+	// 	<h3>{name}</h3>
+	// 	<p>Showing incomplete Todos</p>
+	// 	<button onClick={triggerToggle}>Toggle filter</button>
+	// 	<ul className='container list-group'>{todosList}</ul>
+	// </div>
 
 	return (
 		<section>
-      
+			<Switch></Switch>
 		</section>
 	)
 }

@@ -27,16 +27,24 @@ function App() {
 		)
 	})
 
+	function UserComponent() {
+		return (
+			<div>
+				<h1>Users</h1>
+				<div className='row'>
+					<div className='col-6'>
+						<ul className='list-group'>{userList}</ul>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
 	return (
 		<div className='App container'>
-			<h1>Users</h1>
-			<div className='row'>
-				<div className='col-6'>
-					<ul className='list-group'>{userList}</ul>
-				</div>
-				<div className='col-6'>
-					<TodosList users={currentUser} />
-				</div>
+			<UserComponent />
+			<div className='col-6'>
+				<TodosList users={currentUser} />
 			</div>
 		</div>
 	)
