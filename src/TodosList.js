@@ -24,6 +24,7 @@ function TodosList(user) {
 			return (
 				<li className='list-group-item' key={index}>
 					<p>{todo.title}</p>
+					<p>status: not done</p>
 				</li>
 			)
 		})
@@ -32,11 +33,12 @@ function TodosList(user) {
 		return (
 			<li className='list-group-item' key={index}>
 				<p>{todo.title}</p>
+				<p>status: done</p>
 			</li>
 		)
 	})
 
-	if (user) {
+	if (user && toggle === false) {
 		return (
 			<section>
 				<div value={true}>
@@ -47,7 +49,18 @@ function TodosList(user) {
 				</div>
 			</section>
 		)
-	} else {
+	} else if (toggle === true)
+		return (
+			<section>
+				<div value={true}>
+					<h3>{name}</h3>
+					<p>Showing completed Todos</p>
+					<button onClick={triggerToggle}>Toggle filter</button>
+					<ul className='container list-group'>{todosList}</ul>
+				</div>
+			</section>
+		)
+	else {
 		return <section></section>
 	}
 }

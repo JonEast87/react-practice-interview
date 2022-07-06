@@ -11,8 +11,6 @@ function App() {
 			.then((data) => setUsers(data))
 	}, [])
 
-	console.log(currentUser)
-
 	const userList = users.map((user, index) => {
 		return (
 			<li className='list-group-item' key={index}>
