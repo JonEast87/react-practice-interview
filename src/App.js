@@ -11,6 +11,8 @@ function App() {
 			.then((data) => setUsers(data))
 	}, [])
 
+	console.log(currentUser)
+
 	const userList = users.map((user, index) => {
 		return (
 			<li className='list-group-item' key={index}>
@@ -27,24 +29,26 @@ function App() {
 		)
 	})
 
-	function UserComponent() {
-		return (
-			<div>
-				<h1>Users</h1>
-				<div className='row'>
-					<div className='col-6'>
-						<ul className='list-group'>{userList}</ul>
-					</div>
+	function TodoListRender() {
+		if (Object.entries(currentUser).length > 0) {
+			return (
+				<div className='col-6'>
+					<TodosList users={currentUser} />
 				</div>
-			</div>
-		)
+			)
+		} else {
+			return null
+		}
 	}
 
 	return (
 		<div className='App container'>
-			<UserComponent />
-			<div className='col-6'>
-				<TodosList users={currentUser} />
+			<h1>Users</h1>
+			<div className='row'>
+				<div className='col-6'>
+					<ul className='list-group'>{userList}</ul>
+				</div>
+				<TodoListRender />
 			</div>
 		</div>
 	)

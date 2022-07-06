@@ -1,9 +1,12 @@
 import { useState, useEffect, Switch } from 'react'
 
-function TodosList({ users: { id, name } }) {
+function TodosList(user) {
 	const [todos, setTodos] = useState([])
 	const [toggle, setToggle] = useState(false)
-	let url = 'https://jsonplaceholder.typicode.com/users/' + id + '/todos'
+	const {
+		users: { id, name },
+	} = user
+	let url = `https://jsonplaceholder.typicode.com/users/${id}/todos`
 
 	const triggerToggle = () => {
 		setToggle(!toggle)
@@ -33,18 +36,20 @@ function TodosList({ users: { id, name } }) {
 		)
 	})
 
-	// 	<div value={true}>
-	// 	<h3>{name}</h3>
-	// 	<p>Showing incomplete Todos</p>
-	// 	<button onClick={triggerToggle}>Toggle filter</button>
-	// 	<ul className='container list-group'>{todosList}</ul>
-	// </div>
-
-	return (
-		<section>
-			<Switch></Switch>
-		</section>
-	)
+	if (user) {
+		return (
+			<section>
+				<div value={true}>
+					<h3>{name}</h3>
+					<p>Showing incomplete Todos</p>
+					<button onClick={triggerToggle}>Toggle filter</button>
+					<ul className='container list-group'>{incompleteTodos}</ul>
+				</div>
+			</section>
+		)
+	} else {
+		return <section></section>
+	}
 }
 
 export default TodosList
